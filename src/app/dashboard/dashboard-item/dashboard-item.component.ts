@@ -5,7 +5,11 @@ import { Component, input } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './dashboard-item.component.html',
-  styleUrl: './dashboard-item.component.css'
+  styleUrl: './dashboard-item.component.css',
+  // we can add host component to any component and not just view encapsulation
+  // host: {
+  //   class: 'dashboard-item'
+  // }
 })
 export class DashboardItemComponent {
     // @Input({required: true}) image: { src: string; alt: string };

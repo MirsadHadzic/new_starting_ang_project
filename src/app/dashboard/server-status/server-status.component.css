@@ -1,8 +1,8 @@
-#status {
+:host {
     display: block;
     width: 15rem;
   }
-  
+  /* replaced all Id selectors with colon hosts */
   .status p:first-of-type {
     font-weight: bold;
     animation: pulse 2s infinite;
