@@ -4,22 +4,16 @@
 
 <main>
   <div id="dashboard">
-    <div class="dashboard-item">
-      <app-server-status>
+    <app-dashboard-item [image]="{ src: 'status.png', alt: 'A singal symbol'}" title="Server Status">
+      <app-server-status/>
+    </app-dashboard-item>
 
-      </app-server-status>
-    </div>
+    <app-dashboard-item [image]="{ src: 'globe.png', alt: 'A globe'}" title="Traffic">
+    <app-traffic/>
+    </app-dashboard-item>
 
-    <div class="dashboard-item">
-    <app-traffic>
-
-    </app-traffic>
-    </div>
-
-    <div class="dashboard-item">
-    <app-tickets>
-      
-    </app-tickets>
-    </div>
+    <app-dashboard-item [image]="{ src: 'list.png', alt: 'A list of items'}" title="'Support Tickets'">
+    <app-tickets/>
+    </app-dashboard-item>
   </div>
 </main>
