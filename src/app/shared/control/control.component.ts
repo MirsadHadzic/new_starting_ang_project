@@ -6,7 +6,7 @@ import { Component, input, ViewEncapsulation } from '@angular/core';
   imports: [],
   templateUrl: './control.component.html',
   styleUrl: './control.component.css',
-  // disable encapsulation so css styles can work
+  // disable encapsulation so css styles can work 
   encapsulation: ViewEncapsulation.None
   //.emulated is the default one
 })
