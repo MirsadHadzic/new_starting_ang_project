@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DestroyRef, inject, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -9,8 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 
 // interfaces are good, cause you make a stupid typo, like ngoninit() instead of an ngOnInit(), you can basically fuck it up
-export class ServerStatusComponent implements OnInit{
+export class ServerStatusComponent implements OnInit {
   currentStatus: 'online' | 'offline' | 'unknown' = 'offline';
+  // it helps getting the current working content destroyed after it is finished so there's no mem. leak
+  // private interval?: ReturnType<typeof setInterval>;
+  private destroyRef = inject(DestroyRef);
 
   constructor() {
     
@@ -20,8 +23,8 @@ export class ServerStatusComponent implements OnInit{
   {
 
     console.log('ON INIT');
-
-    setInterval(() => {
+    // this.interval = 
+    const interval = setInterval(() => {
       const rnd = Math.random(); // 0 - 1
 
       if (rnd < 0.5)
@@ -35,6 +38,11 @@ export class ServerStatusComponent implements OnInit{
         this.currentStatus = 'unknown';
       }
     }, 5000);
+
+    // ngOnDestroy is alternative to this code
+    this.destroyRef.onDestroy(() => {
+      clearInterval(interval);
+    });
   }
 
   ngAfterViewInit()
@@ -42,4 +50,7 @@ export class ServerStatusComponent implements OnInit{
     console.log('AFTER VIEW INIT');
   }
 
+  // ngOnDestroy() {
+  //   clearTimeout(this.interval);
+  // }
 }
