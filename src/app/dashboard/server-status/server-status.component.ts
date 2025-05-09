@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-server-status',
@@ -7,10 +7,17 @@ import { Component } from '@angular/core';
   templateUrl: './server-status.component.html',
   styleUrl: './server-status.component.css'
 })
-export class ServerStatusComponent {
+
+// interfaces are good, cause you make a stupid typo, like ngoninit() instead of an ngOnInit(), you can basically fuck it up
+export class ServerStatusComponent implements OnInit{
   currentStatus: 'online' | 'offline' | 'unknown' = 'offline';
 
   constructor() {
+    
+  }
+
+  ngOnInit()
+  {
     setInterval(() => {
       const rnd = Math.random(); // 0 - 1
 
@@ -26,4 +33,5 @@ export class ServerStatusComponent {
       }
     }, 5000);
   }
+
 }
