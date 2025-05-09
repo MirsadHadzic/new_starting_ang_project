@@ -1,7 +1,8 @@
-<form (ngSubmit)="onSubmit()">
+<form (ngSubmit)="onSubmit(titleinput)">
     <app-control class = "control" label="Title">
         <!-- <label>Title</label> -->
-        <input name="title" id="title" />
+         <!-- we could use a ngmodel to get a hold of these values -->
+        <input name="title" id="title" #titleinput/>
     </app-control>
     <app-control class = "control" label="request">
         <!-- <label>Request</label> -->
