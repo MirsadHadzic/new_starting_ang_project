@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { ButtonComponent } from '../../../shared/button/button.component';
 import { ControlComponent } from "../../../shared/control/control.component";
 import { FormsModule } from '@angular/forms';
@@ -23,14 +23,20 @@ export class NewTicketComponent {
   //   console.log('ENTERED TITLE: ' + enteredTitle);
   // }
 
-    // ? needs to be here cause this property here will not be populated with a value instantly
-    @ViewChild('form') form?: ElementRef<HTMLFormElement>; 
+  // ? needs to be here cause this property here will not be populated with a value instantly
+  // @ViewChild('form') private form?: ElementRef<HTMLFormElement>; 
+  
+  //private form = viewChild(ButtonComponent);
 
+  // private form = viewChild('form');
+  private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+
+  // there's also a viewChildren if U want to select a multiple children
   onSubmit (title: string, ticketText: String)
   {
     console.log(title);
     console.log(ticketText);
-    // to celar input elements nakon upisivanja
-    this.form?.nativeElement.reset();
+    // to clear input elements nakon upisivanja
+    this.form().nativeElement.reset();
   }
 }
