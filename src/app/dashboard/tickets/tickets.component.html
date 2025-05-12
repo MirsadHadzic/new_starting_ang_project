@@ -3,7 +3,26 @@
       <img src="list.png" alt="A list of items" />
       <h2>Support Tickets</h2>
     </header> -->
+
+    <div>
+        <ul>
+            <!-- <li *ngFor for older versions-->
+            @for (ticket of tickets; track ticket.id) {
+                <li>
+                    <app-ticket>
+
+                    </app-ticket>
+                    - {{ $first }}
+                </li>
+                <!-- $last, $even, $odd, $count -->
+            } @empty {
+               <p>No tickets available!</p> 
+            }
+        </ul>
+    </div>
+
+
     <div id="new-ticket">
-      <app-new-ticket></app-new-ticket>
+      <app-new-ticket (add)="onAdd($event)"></app-new-ticket>
     </div>
   <!-- </article> -->
