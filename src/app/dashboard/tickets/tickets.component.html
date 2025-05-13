@@ -9,7 +9,7 @@
             <!-- <li *ngFor for older versions-->
             @for (ticket of tickets; track ticket.id) {
                 <li>
-                    <app-ticket>
+                    <app-ticket [data]="ticket">
 
                     </app-ticket>
                     - {{ $first }}
