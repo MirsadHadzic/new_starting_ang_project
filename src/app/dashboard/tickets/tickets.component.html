@@ -9,7 +9,7 @@
             <!-- <li *ngFor for older versions-->
             @for (ticket of tickets; track ticket.id) {
                 <li>
-                    <app-ticket [data]="ticket">
+                    <app-ticket [data]="ticket" (close) = "onCloseTicket(ticket.id)">
 
                     </app-ticket>
                     - {{ $first }}

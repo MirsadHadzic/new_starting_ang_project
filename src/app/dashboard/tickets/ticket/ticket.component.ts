@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { Ticket } from '../ticket.model';
 
 @Component({
@@ -10,6 +10,7 @@ import { Ticket } from '../ticket.model';
 })
 export class TicketComponent {
   data = input.required<Ticket>();
+  close = output();
   detailsVisible = signal(false);
 
 
@@ -18,5 +19,9 @@ export class TicketComponent {
     // ! je stavljen da bi bilo suprotno, ako je bilo false bit ce true i vice versa
     // this.detailsVisible.set(!this.detailsVisible());
     this.detailsVisible.update((wasVisible) => !wasVisible);
+  }
+
+  onMarkAsCompleted() {
+    this.close.emit();
   }
 }
