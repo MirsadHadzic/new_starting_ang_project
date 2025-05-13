@@ -33,6 +33,8 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
   @ViewChild('form') private form?: ElementRef<HTMLFormElement>; 
 
  // @Output() add = new EventEmitter();
+  enteredTitle = '';
+  enteredText = '';
   add = output<{title: string; text:string}>();
 
 
@@ -47,12 +49,14 @@ export class NewTicketComponent implements OnInit, AfterViewInit{
   }
 
   // there's also a viewChildren if U want to select a multiple children
-  onSubmit (title: string, ticketText: string)
+  onSubmit ()
   {
     // emitting an event, we need to listen to that event in tickets.compo9nent.html
-    this.add.emit({title: title, text: ticketText});
-    console.log(title);
-    console.log(ticketText);
+    this.add.emit({title: this.enteredTitle, text: this.enteredText});
+    console.log(this.enteredTitle);
+    console.log(this.enteredText);
+    this.enteredTitle = '';
+    this.enteredText = '';
     // to clear input elements nakon upisivanja
     this.form?.nativeElement.reset();
   }

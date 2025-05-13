@@ -10,6 +10,9 @@ import { Ticket } from '../ticket.model';
 })
 export class TicketComponent {
   data = input.required<Ticket>();
+  
+  // you can set up transformers functions for inputs
+
   close = output();
   detailsVisible = signal(false);
 
